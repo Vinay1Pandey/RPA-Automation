@@ -1,0 +1,878 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Login_Reflection" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uit="http://schemas.uipath.com/workflow/activities/terminal" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="outputConnection" Type="OutArgument(uit:TerminalConnection)" />
+    <x:Property Name="IO_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1030,9786</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Login_Reflection_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="25">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>UiPath.Terminal</x:String>
+      <x:String>UiPath.Terminal.Service</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Login_Reflection" sap:VirtualizedContainerService.HintSize="1010,9726" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="MF user id&#xA;" Name="MF_Username" />
+      <Variable x:TypeArguments="ss:SecureString" sap2010:Annotation.AnnotationText="MF Pasword" Name="MF_Password" />
+      <Variable x:TypeArguments="x:Int32" Name="MF_Delay" />
+      <Variable x:TypeArguments="x:Int32" Name="MF_Timeout" />
+      <Variable x:TypeArguments="x:Object" Name="activeSession" />
+      <Variable x:TypeArguments="x:Object" Name="screenArg" />
+      <Variable x:TypeArguments="x:Int32" Name="MF_Row" />
+      <Variable x:TypeArguments="x:Int32" Name="MF_Col" />
+      <Variable x:TypeArguments="x:Int32" Name="MF_Length" />
+      <Variable x:TypeArguments="x:String" Name="MF_ScreenMsg" />
+      <Variable x:TypeArguments="x:String" Name="MF_SessionPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Extract InConfig " sap:VirtualizedContainerService.HintSize="968,781" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="ui:GenericValue" Name="TimeoutAndDelayType" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[IO_Config(&quot;DelayType_M&quot;).ToString]" DisplayName="Get Asset - Timeout and Delay" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+        <ui:GetRobotAsset.Value>
+          <OutArgument x:TypeArguments="ui:GenericValue">[TimeoutAndDelayType]</OutArgument>
+        </ui:GetRobotAsset.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetRobotAsset>
+      <Assign DisplayName="Timeout - Process State / Config Timeout/Delay " sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_228">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[MF_Timeout]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[CInt(IO_Config("Timeout"+TimeoutAndDelayType))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Delay - Process State / Config Timeout/Delay " sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_229">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[MF_Delay]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[CInt(IO_Config("Delay"+TimeoutAndDelayType))]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="444,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GetAppCredentials.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[MF_Username]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[IO_Config("MainFrame_Cred").ToString]</InArgument>
+          <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[MF_Password]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <Assign DisplayName="Assign - Zeus Account name" sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_230">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[IO_Config("MF_UserID")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[MF_Username]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - Session Path" sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_231">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[MF_SessionPath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[IO_Config("MF_SessionPath").ToString.Replace("\","\\")]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message - MF" sap:VirtualizedContainerService.HintSize="968,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;MAINFRAME LOGIN - Session file &quot; + MF_SessionPath]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uit:TerminalSession ContinueOnError="{x:Null}" ExistingConnection="{x:Null}" SSHPassword="{x:Null}" SSHUserName="{x:Null}" CloseConnection="False" ConnectionString="[&quot;{'AttachExisting':false,'ConnectionType':0,'EhllBasicMode':false,'EhllDll':null,'EhllEnhanced':true,'EhllFunction':'hllapi','EhllSession':'A','Host':null,'Mode':1,'Port':23,'Profile':'&quot;+MF_SessionPath+&quot;','ProviderType':0,'ShowTerminal':true,'TerminalType':0}&quot;]" DelayMS="6000" DisplayName="Terminal Session - Login" sap:VirtualizedContainerService.HintSize="968,8551" sap2010:WorkflowViewState.IdRef="TerminalSession_7" OutputConnection="[outputConnection]" TimeoutMS="50000">
+      <uit:TerminalSession.Body>
+        <ActivityAction x:TypeArguments="uit:TerminalConnection">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="uit:TerminalConnection" Name="terminalSession" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="MF Login" sap:VirtualizedContainerService.HintSize="934,8412" sap2010:WorkflowViewState.IdRef="Sequence_170">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Screen Read" sap:VirtualizedContainerService.HintSize="892,460" sap2010:WorkflowViewState.IdRef="Sequence_145">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeCode Code="Dim screen As Object&#xA;Dim app As Object&#xA;Dim terminal As Object&#xA;&#xA;Dim sessions() As String = {&quot;Terminal_Session.rd3x&quot;}&#xA;Dim frames() As String = {&quot;Frame&quot;}&#xA;Dim view As Object&#xA;Dim frame As Object&#xA;app = GetObject(&quot;Reflection Workspace&quot;)&#xA;frame = app.GetType().InvokeMember(&quot;GetObject&quot;,System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,app,frames)&#xA;view = frame.GetType().InvokeMember(&quot;GetViewByTitleText&quot;,System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,frame,sessions)&#xA;terminal = view.GetType().InvokeMember(&quot;control&quot;,System.Reflection.BindingFlags.GetProperty Or System.Reflection.BindingFlags.Public,Nothing,view,Nothing)&#xA;&#xA;'screen = terminal.GetType().InvokeMember(&quot;Screen&quot;,System.Reflection.BindingFlags.GetProperty Or System.Reflection.BindingFlags.Public,Nothing,terminal,Nothing)&#xA;ActiveSession = terminal&#xA;" ContinueOnError="False" DisplayName="Screen Read - One" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_11">
+                <ui:InvokeCode.Arguments>
+                  <OutArgument x:TypeArguments="x:Object" x:Key="ActiveSession">[activeSession]</OutArgument>
+                </ui:InvokeCode.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeCode>
+              <ui:InvokeCode Code="&#xA;&#xA;&#xA;Dim screen1 As Object&#xA;Dim result As Object&#xA;&#xA;'session = sys.GetType().InvokeMember(&quot;ActiveSession&quot;,System.Reflection.BindingFlags.GetProperty Or System.Reflection.BindingFlags.Public,Nothing,sys,Nothing)&#xA;screen1 = ActiveSessionArg.GetType().InvokeMember(&quot;Screen&quot;,System.Reflection.BindingFlags.GetProperty Or System.Reflection.BindingFlags.Public,Nothing,ActiveSessionArg,Nothing)&#xA;'result = screen.GetType().InvokeMember(&quot;GetText&quot;,System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,screen,parametersArray)&#xA;ScreenArgument = screen1&#xA;'msgBox(result.ToString())&#xA;' sessionType = Type.GetType(&quot;EXTRA.ExtraSystem&quot;)&#xA;''' msgBox(sessionType.ToString)&#xA;'msgBox(sys.GetType().IsCOMObject.ToString)&#xA;&#xA;'sessionType = Type.GetType(&quot;EXTRA.ExtraSession&quot;,)&#xA;&#xA;'msgBox(sessionType.ToString())" ContinueOnError="False" DisplayName="Screen Read - Two" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_12">
+                <ui:InvokeCode.Arguments>
+                  <OutArgument x:TypeArguments="x:Object" x:Key="ScreenArgument">[screenArg]</OutArgument>
+                  <InArgument x:TypeArguments="x:Object" x:Key="ActiveSessionArg">[activeSession]</InArgument>
+                </ui:InvokeCode.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeCode>
+            </Sequence>
+            <Sequence DisplayName="MF - Home Screen" sap:VirtualizedContainerService.HintSize="892,452" sap2010:WorkflowViewState.IdRef="Sequence_146">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_176">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[MF_Row]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">17</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_177">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[MF_Col]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">22</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_178">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[MF_Length]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">62</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_179">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[MF_ScreenMsg]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[screenArg.GetType().InvokeMember("GetText",System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,screenArg,new object(){MF_Row,MF_Col,MF_Length}).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+            <If Condition="[MF_ScreenMsg.ToUpper.Trim.Contains(&quot;LOGON/LOGOFF&quot;)]" DisplayName="Check Logon" sap:VirtualizedContainerService.HintSize="892,434" sap2010:WorkflowViewState.IdRef="If_57">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Else>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,287" sap2010:WorkflowViewState.IdRef="TryCatch_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <uit:TerminalWaitScreenText MatchCase="{x:Null}" DelayMS="[MF_Delay]" DisplayName="Wait Screen Text - Logon" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_16" Text="LOGON/LOGOFF" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalWaitScreenText>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_19">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Throw DisplayName="Throw - Zeus" Exception="[New Exception(&quot;Zeus - Not Logon Screen&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_37" />
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </If.Else>
+            </If>
+            <Sequence DisplayName="Keyin Logon" sap:VirtualizedContainerService.HintSize="892,429" sap2010:WorkflowViewState.IdRef="Sequence_177">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="ui:GenericValue" Name="LoginCmd" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[IO_Config(&quot;MF_CMD&quot;).ToString]" DisplayName="Get Asset - CICS CMD" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                <ui:GetRobotAsset.Value>
+                  <OutArgument x:TypeArguments="ui:GenericValue">[LoginCmd]</OutArgument>
+                </ui:GetRobotAsset.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:GetRobotAsset>
+              <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys - Logon Command" sap:VirtualizedContainerService.HintSize="444,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_35" Keys="[LoginCmd]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendKeys>
+              <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Transmit" sap:VirtualizedContainerService.HintSize="444,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_69" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendControlKey>
+            </Sequence>
+            <Sequence DisplayName="Check Cesn" sap:VirtualizedContainerService.HintSize="892,1951" sap2010:WorkflowViewState.IdRef="Sequence_178">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="850,287" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <uit:TerminalWaitScreenText MatchCase="{x:Null}" DelayMS="[MF_Delay]" DisplayName="Wait Screen Text - Cesn" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_18" Text="GUARDIAN" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uit:TerminalWaitScreenText>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_20">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Throw DisplayName="Throw - Zeus" Exception="[New Exception(&quot;Zeus - Not CESN Screen&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_38" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <Sequence DisplayName="MF - CESN" sap:VirtualizedContainerService.HintSize="850,452" sap2010:WorkflowViewState.IdRef="Sequence_149">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_183">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Row]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_184">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Col]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_185">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Length]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">60</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_186">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[MF_ScreenMsg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[screenArg.GetType().InvokeMember("GetText",System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,screenArg,new object(){MF_Row,MF_Col,MF_Length}).ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+              <If Condition="[not (MF_ScreenMsg.ToUpper.Trim.Contains(&quot;COMMAND UNRECOGNIZED&quot;))]" DisplayName="Check command Unrecognized" sap:VirtualizedContainerService.HintSize="850,1040" sap2010:WorkflowViewState.IdRef="If_70">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Keyin CESN" sap:VirtualizedContainerService.HintSize="563,893" sap2010:WorkflowViewState.IdRef="Sequence_180">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[IO_Config(&quot;Env&quot;).ToString.ToUpper.Equals(&quot;PROD&quot;)]" DisplayName="If - UAT Enviroinment" sap:VirtualizedContainerService.HintSize="521,500" sap2010:WorkflowViewState.IdRef="If_78">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Else>
+                        <Sequence DisplayName="Close existing session" sap:VirtualizedContainerService.HintSize="376,353" sap2010:WorkflowViewState.IdRef="Sequence_202">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Clear" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_98" Key="Clear" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uit:TerminalSendControlKey>
+                          <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys - CESN Command" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_48" Keys="[&quot;GFKO &quot;+MF_Username]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uit:TerminalSendKeys>
+                          <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Transmit" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_99" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uit:TerminalSendControlKey>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Clear" sap:VirtualizedContainerService.HintSize="521,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_85" Key="Clear" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalSendControlKey>
+                    <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys - CESN Command" sap:VirtualizedContainerService.HintSize="521,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_36" Keys="[IO_Config(&quot;MF_CMD1&quot;).ToString]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalSendKeys>
+                    <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Transmit" sap:VirtualizedContainerService.HintSize="521,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_72" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalSendControlKey>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Command Invalid Sequence" sap:VirtualizedContainerService.HintSize="242,205" sap2010:WorkflowViewState.IdRef="Sequence_179">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Clear" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_86" Key="Clear" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE" />
+                    <Throw DisplayName="Throw - Command Invalid MF Login" Exception="[New Exception(&quot;Zeus - Mainframe Login Command is invalid&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_33" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="892,22" sap2010:WorkflowViewState.IdRef="Delay_11" />
+            <Sequence DisplayName="Check Sign On" sap:VirtualizedContainerService.HintSize="892,845" sap2010:WorkflowViewState.IdRef="Sequence_168">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="MF - CICS SIGN ON" sap:VirtualizedContainerService.HintSize="484,452" sap2010:WorkflowViewState.IdRef="Sequence_152">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_187">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Row]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_188">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Col]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_189">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Length]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">60</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_190">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[MF_ScreenMsg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[screenArg.GetType().InvokeMember("GetText",System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,screenArg,new object(){MF_Row,MF_Col,MF_Length}).ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+              <If Condition="[MF_ScreenMsg.ToUpper.Trim.Contains(&quot;CICS SIGN-ON&quot;)]" DisplayName="Check CICS Sign-On" sap:VirtualizedContainerService.HintSize="484,261" sap2010:WorkflowViewState.IdRef="If_66">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Else>
+                  <Sequence DisplayName="Sign On - F - Sequence" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_167">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Throw DisplayName="Throw Not CISC SIGN-ON" Exception="[New Exception(&quot;Zeus - Not Sign On Page&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_31" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Keyin Sign On" sap:VirtualizedContainerService.HintSize="892,413" sap2010:WorkflowViewState.IdRef="Sequence_191">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys - MF_Username" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_43" Keys="[MF_Username]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendKeys>
+              <uit:TerminalMoveCursor Column="25" DelayMS="[MF_Delay]" DisplayName="Move Cursor - Tab" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalMoveCursor_1" Row="8" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalMoveCursor>
+              <uit:TerminalSendKeysSecure DelayMS="[MF_Delay]" DisplayName="Send Keys Secure - MF_Password" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminalSendKeysSecure_16" SecureText="[MF_Password]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE" />
+              <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Transmit" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_88" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendControlKey>
+            </Sequence>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="892,22" sap2010:WorkflowViewState.IdRef="Delay_16" />
+            <Sequence DisplayName="Check Sign On" sap:VirtualizedContainerService.HintSize="892,884" sap2010:WorkflowViewState.IdRef="Sequence_190">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="MF - Sign On Error Check" sap:VirtualizedContainerService.HintSize="663,452" sap2010:WorkflowViewState.IdRef="Sequence_181">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_211">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Row]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">24</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="MF_Col" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_212">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Col]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="MF_Length" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_213">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[MF_Length]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">60</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="MF_ScreenMsg" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_214">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[MF_ScreenMsg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[screenArg.GetType().InvokeMember("GetText",System.Reflection.BindingFlags.InvokeMethod Or System.Reflection.BindingFlags.Public,Nothing,screenArg,new object(){MF_Row,MF_Col,MF_Length}).ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+              <If Condition="[MF_ScreenMsg.Trim.Count&gt;0]" DisplayName="Check Sign-On Error" sap:VirtualizedContainerService.HintSize="663,300" sap2010:WorkflowViewState.IdRef="If_73">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="SignOn - F" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_182">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Throw DisplayName="Throw LOGIN INCORRECT" Exception="[New BusinessRuleException(&quot;Zeus - Mainframe Login Failed Due to the message :&quot;+MF_ScreenMsg)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_34" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="SignOn - P" sap:VirtualizedContainerService.HintSize="376,153" sap2010:WorkflowViewState.IdRef="Sequence_189">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Clear" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_89" Key="Clear" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalSendControlKey>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="Login - Zeus" sap:VirtualizedContainerService.HintSize="892,671" sap2010:WorkflowViewState.IdRef="Sequence_197">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys - Zeus Cmd" sap:VirtualizedContainerService.HintSize="480,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_46" Keys="[IO_Config(&quot;Zeus_CMD&quot;).ToString]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendKeys>
+              <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key - Transmit" sap:VirtualizedContainerService.HintSize="480,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_94" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendControlKey>
+              <Sequence DisplayName="Check System Signon" sap:VirtualizedContainerService.HintSize="480,379" sap2010:WorkflowViewState.IdRef="Sequence_198">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,287" sap2010:WorkflowViewState.IdRef="TryCatch_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <uit:TerminalWaitScreenText DelayMS="300" DisplayName="Wait Screen Text - Zeus Login" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_21" MatchCase="False" Text="SYSTEM SIGNON" TimeoutMS="30000" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalWaitScreenText>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_21">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Throw Exception="[New Exception(&quot;Zeus - Not Zeus Signon Page&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_39" />
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Sequence>
+            </Sequence>
+            <Sequence DisplayName="Keyin Zeus" sap:VirtualizedContainerService.HintSize="892,878" sap2010:WorkflowViewState.IdRef="Sequence_193">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uit:TerminalSetFieldAtPosition Column="34" DelayMS="[MF_Delay]" DisplayName="Set PC" sap:VirtualizedContainerService.HintSize="521,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_28" Row="5" Text="PC" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSetFieldAtPosition>
+              <If Condition="[Not IO_Config(&quot;Env&quot;).ToString.Equals(&quot;PROD&quot;)]" DisplayName="If - UAT Enter Credentials" sap:VirtualizedContainerService.HintSize="521,558" sap2010:WorkflowViewState.IdRef="If_74">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Login Zeus" sap:VirtualizedContainerService.HintSize="376,411" sap2010:WorkflowViewState.IdRef="Sequence_192">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uit:TerminalMoveCursor Column="48" DelayMS="300" DisplayName="Move Cursor" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalMoveCursor_2" Row="5" TimeoutMS="5000" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalMoveCursor>
+                    <uit:TerminalSendKeys DelayMS="[MF_Delay]" DisplayName="Send Keys" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_47" Keys="[MF_Username]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalSendKeys>
+                    <uit:TerminalMoveCursor Column="71" DelayMS="300" DisplayName="Move Cursor" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalMoveCursor_3" Row="5" TimeoutMS="5000" WaitType="COMPLETE">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uit:TerminalMoveCursor>
+                    <uit:TerminalSendKeysSecure DelayMS="[MF_Delay]" DisplayName="Set Password" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminalSendKeysSecure_18" SecureText="[New Net.NetworkCredential(String.Empty,MF_Username).SecurePassword]" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE" />
+                  </Sequence>
+                </If.Then>
+              </If>
+              <uit:TerminalSendControlKey DelayMS="[MF_Delay]" DisplayName="Send Control Key" sap:VirtualizedContainerService.HintSize="521,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_97" Key="Transmit" TimeoutMS="[MF_Timeout]" WaitType="COMPLETE">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uit:TerminalSendControlKey>
+            </Sequence>
+            <Sequence DisplayName="Check Zeus" sap:VirtualizedContainerService.HintSize="892,379" sap2010:WorkflowViewState.IdRef="Sequence_199">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,287" sap2010:WorkflowViewState.IdRef="TryCatch_22">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <uit:TerminalWaitScreenText DelayMS="300" DisplayName="Wait Screen Text - Zeus Home" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="TerminalWaitScreenText_20" MatchCase="False" Text="SYSTEM MENU" TimeoutMS="30000" WaitType="COMPLETE">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uit:TerminalWaitScreenText>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_22">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Throw Exception="[New Exception(&quot;Zeus - Not Zeus Home Page&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_40" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uit:TerminalSession.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uit:TerminalSession>
+    <ui:LogMessage DisplayName="Log Message - Launched" sap:VirtualizedContainerService.HintSize="968,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Reflection Login Completed&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
